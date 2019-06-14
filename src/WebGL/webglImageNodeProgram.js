@@ -54,7 +54,11 @@ function webglImageNodeProgram() {
 
     updateSize: updateSize,
 
-    render: render
+    render: render,
+
+    atlas: function () {
+      return atlas;
+    }
   };
 
   function refreshTexture(texture, idx) {

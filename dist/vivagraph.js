@@ -4761,6 +4761,9 @@ function renderer(graph, settings) {
       return graphics;
     },
     
+    /**
+     * Gets current layout.
+     */
     getLayout: function() {
       return layout;
     },
@@ -5479,6 +5482,7 @@ function webglGraphics(options) {
     options = merge(options, {
         enableBlending : true,
         preserveDrawingBuffer : false,
+        premultipliedAlpha: null,
         clearColor: false,
         clearColorValue : {
             r : 1,
@@ -5757,6 +5761,10 @@ function webglGraphics(options) {
             if (options.preserveDrawingBuffer) {
                 contextParameters.preserveDrawingBuffer = true;
             }
+
+           if (options.premultipliedAlpha !== null) {
+               contextParameters.premultipliedAlpha = options.premultipliedAlpha;
+           }
 
             container = c;
 
@@ -6473,7 +6481,11 @@ function webglImageNodeProgram() {
 
     updateSize: updateSize,
 
-    render: render
+    render: render,
+
+    atlas: function () {
+      return atlas;
+    }
   };
 
   function refreshTexture(texture, idx) {
@@ -7312,7 +7324,7 @@ function webglSquare(size, color) {
 
 },{"./parseColor.js":55}],66:[function(require,module,exports){
 // todo: this should be generated at build time.
-module.exports = '0.8.1';
+module.exports = '0.10.1';
 
 },{}]},{},[1])(1)
 });

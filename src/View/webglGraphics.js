@@ -28,6 +28,7 @@ function webglGraphics(options) {
     options = merge(options, {
         enableBlending : true,
         preserveDrawingBuffer : false,
+        premultipliedAlpha: null,
         clearColor: false,
         clearColorValue : {
             r : 1,
@@ -306,6 +307,10 @@ function webglGraphics(options) {
             if (options.preserveDrawingBuffer) {
                 contextParameters.preserveDrawingBuffer = true;
             }
+
+           if (options.premultipliedAlpha !== null) {
+               contextParameters.premultipliedAlpha = options.premultipliedAlpha;
+           }
 
             container = c;
 
