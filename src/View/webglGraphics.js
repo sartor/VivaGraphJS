@@ -326,7 +326,7 @@ function webglGraphics(options) {
                 throw msg;
             }
             if (options.enableBlending) {
-                gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+                gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
                 gl.enable(gl.BLEND);
             }
             if (options.clearColor) {

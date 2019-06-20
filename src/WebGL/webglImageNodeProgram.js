@@ -18,7 +18,7 @@ function webglImageNodeProgram() {
   var ATTRIBUTES_PER_PRIMITIVE = 18;
   var nodesFS = createNodeFragmentShader();
   var nodesVS = createNodeVertexShader();
-  var tilesPerTexture = 4096; // TODO: Get based on max texture size
+  var tilesPerTexture = 64; // TODO: Get based on max texture size
   var atlas;
   var program;
   var gl;

@@ -11,14 +11,15 @@ module.exports = webglAtlas;
  *          parameter a new canvas will be created.
  */
 function webglAtlas(tilesPerTexture) {
-  var tilesPerRow = Math.sqrt(tilesPerTexture || 1024) << 0,
-    tileSize = tilesPerRow,
-    lastLoadedIdx = 1,
+  var tilesPerRow = 8,
+    tileSize = 256,
+    lastLoadedIdx = 0,
     loadedImages = {},
     dirtyTimeoutId,
     skipedDirty = 0,
     textures = [],
-    trackedUrls = [];
+    trackedUrls = [],
+    tileBorder = 15;
 
   if (!isPowerOf2(tilesPerTexture)) {
     throw "Tiles per texture should be power of two.";
@@ -142,7 +143,7 @@ function webglAtlas(tilesPerTexture) {
     }
     var currentTexture = textures[tilePosition.textureNumber];
 
-    currentTexture.ctx.drawImage(img, tilePosition.col * tileSize, tilePosition.row * tileSize, tileSize, tileSize);
+    currentTexture.ctx.drawImage(img, tilePosition.col * tileSize + tileBorder, tilePosition.row * tileSize + tileBorder, tileSize - tileBorder * 2, tileSize - tileBorder * 2);
     trackedUrls[tileNumber] = img.src;
 
     loadedImages[img.src] = coordinates;
