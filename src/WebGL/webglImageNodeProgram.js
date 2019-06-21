@@ -160,9 +160,10 @@ function webglImageNodeProgram() {
     }
 
     if (nodeUI.id < nodesCount && nodesCount > 0) {
-      if (nodeUI.src) {
-        atlas.remove(nodeUI.src);
-      }
+      // Do not remove source on Node remove.
+      //if (nodeUI.src) {
+      //  atlas.remove(nodeUI.src);
+      //}
 
       utils.copyArrayPart(nodes, nodeUI.id * ATTRIBUTES_PER_PRIMITIVE, nodesCount * ATTRIBUTES_PER_PRIMITIVE, ATTRIBUTES_PER_PRIMITIVE);
     }
